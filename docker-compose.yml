@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  hasura:
+    image: hasura/graphql-engine:v2.1.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - HASURA_GRAPHQL_DATABASE_URL=postgres://decktopus:050505@postgres:5432/myapp
+      - HASURA_GRAPHQL_ENABLE_CONSOLE=true
+      - HASURA_GRAPHQL_ADMIN_SECRET=myadminsecret
+
+  postgres:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=decktopus
+      - POSTGRES_PASSWORD=050505
+      - POSTGRES_DB=myapp
