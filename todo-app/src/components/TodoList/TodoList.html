@@ -1,0 +1,8 @@
+<div>
+    <h2>Todolist</h2>
+    <ul class="card">
+      <li style="list-style: none;" v-for="todo in todos" :key="todo.id">
+        {{ todo.description }}
+      </li>
+    </ul>
+  </div>

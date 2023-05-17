@@ -1,0 +1,11 @@
+<b-card bg-variant="dark" text-variant="white" title="Add New Task">
+    <b-card-text>
+        <b-container>
+            <b-form-input
+            placeholder="Enter Something.."
+            v-model="enteredDescription"
+        ></b-form-input>
+        </b-container>
+    </b-card-text>
+  <b-button href="#" variant="primary" @click="addTask">Add</b-button>
+</b-card>
