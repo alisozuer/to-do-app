@@ -29,6 +29,5 @@
   </script>
   
   <style scoped>
-  /* Gerekli stillemeleri burada yapabilirsiniz */
   </style>
   
