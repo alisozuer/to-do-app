@@ -2,8 +2,8 @@
 <style lang="scss" src="./TodoList.scss" scoped></style>
   
   <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import GET_TODOS from '@/graphql/GetTodo';
+  import { Component, Vue, Prop  } from 'vue-property-decorator';
+  import TodoItem from '../TodoItem/TodoItem.vue'
   
   interface Todo {
     id: number;
@@ -11,23 +11,14 @@
     isDone: boolean;
   }
   
-  @Component
+  @Component({
+  components: {
+    TodoItem,
+  },
+})
   export default class Todolist extends Vue {
-    todos: Todo[] = [];
-  
-    async mounted() {
-    try {
-      const response = await this.$apollo.query({
-        query: GET_TODOS,
-      });
-      this.todos = response.data.todos;
-    } catch (error) {
-      console.error(error);
-    }
-  }
+    @Prop({ required: true })
+    todos!: Todo[];
   }
   </script>
-  
-  <style scoped>
-  </style>
   

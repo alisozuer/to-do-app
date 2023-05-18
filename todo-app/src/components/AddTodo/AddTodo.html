@@ -1,11 +1,11 @@
-<b-card bg-variant="dark" text-variant="white" title="Add New Task">
+<b-card bg-variant="dark" class="rounded-0" text-variant="white" title="Add New Task">
     <b-card-text>
-        <b-container>
+        <b-container class="mb-3">
             <b-form-input
+            @keydown.enter="addTask"
             placeholder="Enter Something.."
             v-model="enteredDescription"
         ></b-form-input>
         </b-container>
     </b-card-text>
-  <b-button href="#" variant="primary" @click="addTask">Add</b-button>
 </b-card>

@@ -9,7 +9,7 @@ const ADD_TODO = gql`
     insert_todos_one(
       object: {
         id: $id, 
-        description: $description, 
+        description: $description,
         isDone: $isDone
       }
     ) {
