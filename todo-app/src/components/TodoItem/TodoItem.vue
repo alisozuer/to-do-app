@@ -52,7 +52,6 @@
     }
   }
   save(): void {
-    console.log(this.id, this.description);
     this.$apollo.mutate({
       mutation: UPDATE_TODO,
       variables: {

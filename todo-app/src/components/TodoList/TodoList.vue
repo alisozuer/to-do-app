@@ -2,7 +2,8 @@
 <style lang="scss" src="./TodoList.scss" scoped></style>
   
   <script lang="ts">
-  import { Component, Vue, Prop  } from 'vue-property-decorator';
+  import { Component, Vue } from 'vue-property-decorator';
+  import GET_TODOS from '@/graphql/GetTodo';
   import TodoItem from '../TodoItem/TodoItem.vue'
   
   interface Todo {
@@ -15,10 +16,14 @@
   components: {
     TodoItem,
   },
+  apollo: {
+    todos: {
+      query: GET_TODOS,
+      errorPolicy: 'all'
+    }
+  }
 })
   export default class Todolist extends Vue {
-    @Prop({ required: true })
-    todos!: Todo[];
+    todos: Todo[] = [];
   }
   </script>
-  
