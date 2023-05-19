@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const UPDATE_TODO = gql`
-  mutation updateDesc(
+  mutation updateTodo(
     $id: Int!
     $description: String!
   ) {

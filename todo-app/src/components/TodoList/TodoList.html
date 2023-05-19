@@ -1,7 +1,7 @@
 <div>
   <h2 class="my-4">Todolist</h2>
   <b-card class="border-0" style="box-shadow: rgba(52, 52, 52, 0.24) 0px 3px 8px;">
-    <b-list-group>
+    <b-list-group v-if="todos.length">
       <TodoItem
       v-for="(todo, index) in todos" 
       :key="index"
@@ -10,6 +10,7 @@
       :isDone="todo.isDone"
       />
   </b-list-group>
+  <b-list-group v-else>There are no missions... </b-list-group>
 </b-card>
 
   </div>
