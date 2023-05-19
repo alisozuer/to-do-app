@@ -7,6 +7,7 @@
   import UPDATE_TODO from '../../graphql/UpdateTodo';
   import MARK_TODO_AS_DONE from '../../graphql/MarkAsDone';
   import MARK_TODO_AS_UNDONE from '../../graphql/MarkAsUnDone';
+  import GET_TODOS from '../../graphql/GetTodo';
   
   @Component
   export default class Todolist extends Vue {
@@ -14,7 +15,6 @@
   @Prop() id!: number;
   @Prop() description!: string;
   @Prop() isDone!: boolean;
-  editedIsDone = false;
   editMode = false;
   editDescription = '';
 
@@ -39,13 +39,13 @@
   }
   async toggleTodoStatus(): Promise<void> {
     try {
-      const mutation = this.editedIsDone ? MARK_TODO_AS_DONE : MARK_TODO_AS_UNDONE;
+      const mutation = this.isDone ? MARK_TODO_AS_DONE : MARK_TODO_AS_UNDONE;
       await this.$apollo.mutate({
         mutation,
         variables: {
           id: this.id
         },
-        refetchQueries: ["todos"],
+        refetchQueries: [{ query: GET_TODOS }]
       });
     } catch (error) {
       console.error(error);
@@ -58,7 +58,7 @@
         id: this.id,
         description: this.editDescription
       },
-      refetchQueries: ["todos"],
+      refetchQueries: [{ query: GET_TODOS }],
       errorPolicy: 'all',
     }).then(() => {
          this.editMode = false;
@@ -75,7 +75,6 @@
 
   private mounted(): void {
     document.addEventListener('click', this.handleClickOutside);
-    this.editedIsDone = this.isDone;
   }
 
   private beforeDestroy(): void {

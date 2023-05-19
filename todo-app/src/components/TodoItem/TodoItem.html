@@ -1,6 +1,6 @@
 <b-list-group-item
 class="pt-3 d-flex align-items-center text-start" style="list-style: none; border: none; border-radius: 0; border-bottom: 1px solid #c4c4c4;">
-    <b-form-checkbox class="me-3" v-model="editedIsDone" @change="toggleTodoStatus"></b-form-checkbox>
+    <b-form-checkbox class="me-3" v-model="isDone" @change="toggleTodoStatus"></b-form-checkbox>
     <div class="w-100"  @click="editTodo">
         <template v-if="editMode">
             <b-form-input v-model="editDescription" @keyup.enter="save" @keyup.esc="editMode = false" autofocus></b-form-input>

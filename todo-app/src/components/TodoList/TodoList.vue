@@ -3,7 +3,7 @@
   
   <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
-  import GET_TODOS from '@/graphql/GetTodo';
+  import GET_TODOS from '../../graphql/GetTodo';
   import TodoItem from '../TodoItem/TodoItem.vue'
   
   interface Todo {
@@ -12,17 +12,18 @@
     isDone: boolean;
   }
   
-  @Component({
-  components: {
-    TodoItem,
-  },
-  apollo: {
-    todos: {
-      query: GET_TODOS,
-      errorPolicy: 'all'
+    @Component({
+    components: {
+      TodoItem,
+    },
+    apollo: {
+      todos: {
+        query: GET_TODOS,
+        fetchPolicy: 'network-only',
+        errorPolicy: 'all',
+      }
     }
-  }
-})
+    })
   export default class Todolist extends Vue {
     todos: Todo[] = [];
   }
