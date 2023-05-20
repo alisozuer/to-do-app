@@ -1,0 +1,23 @@
+.card {
+    &__flex-container {
+      display: flex;
+      gap: 10px;
+    }
+  
+    &__input {
+      flex: 1;
+      flex-grow: 4;
+    }
+  
+    &__select {
+      flex: 1;
+      flex-grow: 1;
+      padding: 5px;
+    }
+  
+    &__button {
+      flex: 1;
+      flex-grow: 0;
+    }
+  }
+  

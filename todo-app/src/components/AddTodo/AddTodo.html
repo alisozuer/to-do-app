@@ -1,12 +1,25 @@
-<b-card bg-variant="dark" class="rounded-0" text-variant="white">
-    <b-card-title class="text-center">Add New Task</b-card-title>
+<b-card bg-variant="dark" class="card rounded-0" text-variant="white">
+    <b-card-title class="card__title text-center">Add New Task</b-card-title>
     <b-card-text>
-        <b-container class="mb-3">
-            <b-form-input
-            @keydown.enter="addTask"
+      <b-container class="mb-3">
+        <div class="card__flex-container flex-container">
+          <b-form-input
+            class="card__input input rounded-0 flex-item long"
             placeholder="Enter Something.."
             v-model="enteredDescription"
-        ></b-form-input>
-        </b-container>
+          ></b-form-input>
+          <b-form-select
+            v-model="priorityValue"
+            :options="priorityOptions"
+            class="card__select select flex-item medium"
+            size="sm"
+          ></b-form-select>
+          <b-button
+            class="card__button button flex-item short"
+            @click="addTask"
+          >Ekle</b-button>
+        </div>
+      </b-container>
     </b-card-text>
-</b-card>
+  </b-card>
+  

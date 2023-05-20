@@ -7,7 +7,6 @@
   import UPDATE_TODO from '../../graphql/UpdateTodo';
   import MARK_TODO_AS_DONE from '../../graphql/MarkAsDone';
   import MARK_TODO_AS_UNDONE from '../../graphql/MarkAsUnDone';
-  import GET_TODOS from '../../graphql/GetTodo';
   
   @Component
   export default class Todolist extends Vue {
@@ -15,15 +14,22 @@
   @Prop() id!: number;
   @Prop() description!: string;
   @Prop() isDone!: boolean;
+  @Prop() priority!: number;
   editMode = false;
   editDescription = '';
 
 
-
+  showPriority(data: number): string {
+    const priorityData = ['High', 'Mid', 'Low'];
+    return priorityData[data - 1];
+  }
+  colorPriority(data: number): string {
+    const priorityData = ['bg-danger', 'bg-secondary', 'bg-primary'];
+    return priorityData[data - 1];
+  }
   editTodo(): void {
     this.editMode = true;
   }
-
   async deleteTodo(): Promise<void> {
     try {
       await this.$apollo.mutate({
@@ -45,7 +51,7 @@
         variables: {
           id: this.id
         },
-        refetchQueries: [{ query: GET_TODOS }]
+        refetchQueries: ['todos']
       });
     } catch (error) {
       console.error(error);
@@ -58,7 +64,7 @@
         id: this.id,
         description: this.editDescription
       },
-      refetchQueries: [{ query: GET_TODOS }],
+      refetchQueries: ['todos'],
       errorPolicy: 'all',
     }).then(() => {
          this.editMode = false;

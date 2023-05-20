@@ -5,16 +5,19 @@ const ADD_TODO = gql`
     $description: String!
     $id: Int!
     $isDone: Boolean!
+    $priority: Int!
   ) {
     insert_todos_one(
       object: {
         id: $id, 
         description: $description,
-        isDone: $isDone
+        isDone: $isDone,
+        priority: $priority
       }
     ) {
       description
       isDone
+      priority
     }
   }
 `;
