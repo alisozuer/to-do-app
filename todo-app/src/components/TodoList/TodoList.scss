@@ -1,0 +1,17 @@
+.todo-list {
+    &__title {
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    &__tab{
+        padding: 10px 0;
+    }
+    &__card {
+      margin-bottom: 3rem;
+      border: none;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    &__select{
+        padding: 6px;
+    }
+}

@@ -2,7 +2,7 @@
   <div class="home">
     <AddTodo />
     <b-container>
-      <TodoList />
+      <TodoList  />
     </b-container>
   </div>
 </template>

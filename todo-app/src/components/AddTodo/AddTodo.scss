@@ -1,4 +1,8 @@
 .card {
+    &__title{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
     &__flex-container {
       display: flex;
       gap: 10px;

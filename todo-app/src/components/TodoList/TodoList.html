@@ -1,9 +1,14 @@
-<div>
-  <h2 class="my-4">Todolist</h2>
-  <b-card class="border-0 mb-5" style="box-shadow: rgba(52, 52, 52, 0.24) 0px 3px 8px;">
+<div class="todo-list">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="todo-list__title">Todolist</h2>
+    <div>
+      <b-form-select class="todo-list__select" v-model="selectedOrder" :options="optionsOrder"></b-form-select>
+    </div>
+  </div>
+  <b-card class="todo-list__card">
     <b-tabs small card v-model="activeTab">
-      <b-tab class="pb-3" v-for="(tab, index) in tabs" :key="index" :title="tab.title" :active="activeTab === index" >
-        <b-list-group v-if="activeTab === index && todos.length">
+      <b-tab class="todo-list__tab" v-for="(tab, index) in tabs" :key="index" :title="tab.title" :active="activeTab === index">
+        <b-list-group v-if="activeTab === index && todos.length" class="todo-list__items">
           <TodoItem
             v-for="(todo, todoIndex) in todos"
             :key="todoIndex"
@@ -11,10 +16,11 @@
             :priority="todo.priority"
             :description="todo.description"
             :isDone="todo.isDone"
+            class="todo-list__item"
           />
         </b-list-group>
-        <b-list-group class="pt-4" v-else>{{tab.emptyMessage}}</b-list-group>
+        <b-list-group v-else class="todo-list__empty-message">{{ tab.emptyMessage }}</b-list-group>
       </b-tab>
     </b-tabs>
   </b-card>
-  </div>
+</div>
