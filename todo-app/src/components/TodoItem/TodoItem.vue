@@ -52,8 +52,11 @@
           id: this.id
         },
         refetchQueries: ['todos']
+      }).then(() => {
+        this.editDescription = '';
       });
     } catch (error) {
+      this.editDescription = '';
       console.error(error);
     }
   }
@@ -68,8 +71,10 @@
       errorPolicy: 'all',
     }).then(() => {
          this.editMode = false;
+         this.editDescription = '';
         }).catch((error) => {
          console.error(error);
+         this.editDescription = '';
          this.editMode = false;
         });
   }
